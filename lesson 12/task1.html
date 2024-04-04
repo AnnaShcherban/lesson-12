@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson12</title>
+  </head>
+  <body>
+    <h1>задача 1</h1>
+    <p>
+      Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів та
+      порівнянь чисел під час сортування бульбашкою
+    </p>
+    <script>
+      let arr = []
+      let exchanges = 0
+      let comparisons = 0
+      for (let i = 0; i < 30; i++) {
+        arr.push(Math.floor(Math.random() * 100))
+      }
+      document.write(`Масив початковий;${arr}<br>`)
+      //let exchanges = 0
+      //let comparisons = 0
+      function quantityАccount(isArray) {
+        let isChange
+        do {
+          isChange = false
+          for (let i = 1; i < isArray.length; i++) {
+            comparisons++
+            if (isArray[i - 1] > isArray[i]) {
+              exchanges++
+              let temp = isArray[i]
+              isArray[i] = isArray[i - 1]
+              isArray[i - 1] = temp
+              isChange = true
+            }
+          }
+        } while (isChange)
+        return isArray
+      }
+
+      document.write(`Масив після сортування;${quantityАccount(
+        arr
+      )}<br> Порівнянь!!! ${comparisons}<br> Обмінів !!!${exchanges}<br>
+      `)
+    </script>
+  </body>
+</html>
